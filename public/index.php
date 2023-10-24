@@ -1,11 +1,12 @@
 <?php
 
-require("../vendor/autoload.php");
+use Test\GameStart;
 
-use Campus\Test\Test;
+require __DIR__.'/../test/gameStart.php';
 
-$test = new Test(false, false);
+$test = new GameStart(false, 2);
 $test->test_start_game();
+
 
 
 echo "Bonjour !";
