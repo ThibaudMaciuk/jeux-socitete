@@ -1,0 +1,16 @@
+{
+    "player": {
+        "jetons": {
+            "red": 0,
+            "yellow": 0,
+            "white": 0,
+            "green": 0,
+            "black": 0,
+            "blue": 0
+        
+        },
+        "cards": [
+            "devCard1",
+            "devCard2"
+        ]
+}
