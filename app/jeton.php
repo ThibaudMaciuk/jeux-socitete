@@ -18,41 +18,34 @@ class gestionJeton
     {
             switch ($color) {
                 case 'rouge':
-                    $this->jetonRouge = 0;
-                    break;
+                    $this->jetonRouge += 1;
+                    return true;
+                    
                 case 'bleu':
-                    $this->jetonBleu = 0;
-                    break;
+                    $this->jetonBleu += 1;
+                    return true;
+                    
                 case 'vert':
-                    $this->jetonVert = 0;
-                    break;
+                    $this->jetonVert += 1;
+                    return true;
+                    
                 case 'or':
-                    $this->jetonOr = 0;
-                    break;
+                    $this->jetonOr += 1;
+                    return true;
+                    
                 case 'blanc':
-                    $this->jetonBlanc = 0;
-                    break;
+                    $this->jetonBlanc += 1;
+                    return true;
+                
                 case 'noir':
-                    $this->jetonNoir = 0;
-                    break;
+                    $this->jetonNoir += 1;
+                    return true;
+
                 default:
                 return false;
             }
     }
 }
 
-?>
-<html>
-    <head>
-        
-    </head>
-
-    <body>
-        <button class="favorite styled" type="button">Vert</button>
-        <button class="favorite styled" type="button">Blanc</button>
-        <button class="favorite styled" type="button">Bleu</button>
-        <button class="favorite styled" type="button">Rouge</button>
-        <button class="favorite styled" type="button">Noir</button>
-        <button class="favorite styled" type="button">Or</button>    
-    </body>
-</html>
+$addjeton = new gestionJeton();
+$addjeton->addJeton('bleu');
