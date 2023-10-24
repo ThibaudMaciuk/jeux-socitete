@@ -8,7 +8,6 @@ class gestionJeton
     public $jetonOr = 0;
     public $jetonBlanc = 0;
     public $jetonNoir = 0;
-    private array $color = ['rouge', 'bleu', 'vert', 'or', 'blanc', 'noir'];
 
     public function __construct()
     {
@@ -17,8 +16,6 @@ class gestionJeton
 
     public function addJeton(string $color)
     {
-        if (in_array($color, $this->color))
-        {            
             switch ($color) {
                 case 'rouge':
                     $this->jetonRouge = 0;
@@ -37,13 +34,10 @@ class gestionJeton
                     break;
                 case 'noir':
                     $this->jetonNoir = 0;
-                    break;    
+                    break;
+                default:
+                return false;
             }
-        }
-        else
-        {
-            return false;
-        }
     }
 }
 
@@ -54,14 +48,11 @@ class gestionJeton
     </head>
 
     <body>
-
-    
+        <button class="favorite styled" type="button">Vert</button>
+        <button class="favorite styled" type="button">Blanc</button>
+        <button class="favorite styled" type="button">Bleu</button>
+        <button class="favorite styled" type="button">Rouge</button>
+        <button class="favorite styled" type="button">Noir</button>
+        <button class="favorite styled" type="button">Or</button>    
     </body>
 </html>
-
-<button class="favorite styled" type="button">Vert</button>
-<button class="favorite styled" type="button">Blanc</button>
-<button class="favorite styled" type="button">Bleu</button>
-<button class="favorite styled" type="button">Rouge</button>
-<button class="favorite styled" type="button">Noir</button>
-<button class="favorite styled" type="button">Or</button>
