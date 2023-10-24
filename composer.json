@@ -1,15 +1,16 @@
 {
-    "name": "campus/jeux-socitete",
-    "description": "jeu de societe",
-    "autoload": {
-        "psr-4": {
-            "Campus\\JeuxSocitete\\": "app/"
-        }
-    },
-    "authors": [
-        {
-            "name": "TRNCN"
-        }
-    ],
-    "require": {}
+  "name": "campus/jeux-socitete",
+  "description": "jeu de societe",
+  "autoload": {
+    "psr-4": {
+      "Campus\\JeuxSocitete\\": "app/",
+      "Campus\\Test\\": "test/"
+    }
+  },
+  "authors": [
+    {
+      "name": "TRNCN"
+    }
+  ],
+  "require": {}
 }
