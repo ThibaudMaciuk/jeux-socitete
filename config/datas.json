@@ -1,0 +1,37 @@
+{
+  "player": {
+    "jetons": {
+      "red": 0,
+      "yellow": 0,
+      "white": 0,
+      "green": 0,
+      "black": 0,
+      "blue": 0
+    },
+    "cards": [
+      {
+        "card_1": {
+          "points_prestige": [],
+          "cout_jetons": [],
+          "bonus": [],
+          "image": "url"
+        },
+        "card_2": {
+          "points_prestige": [],
+          "cout_jetons": [],
+          "bonus": [],
+          "image": "url"
+        },
+        "card_3": {
+          "points_prestige": [],
+          "cout_jetons": [],
+          "bonus": [],
+          "image": "url"
+        }
+      }
+    ],
+    "joker": {
+      "jeton_dor": 0
+    }
+  }
+}
