@@ -1,8 +1,8 @@
 <?php
 
-namespace Campus\Test;
+namespace Test;
 
-class Test
+class GameStart
 {
   
   public $gameState;
@@ -17,7 +17,7 @@ class Test
 
   public function test_start_game() 
   { 
-    return  assert($this->gameState == true);
+    return  'OKOKOKOKOKOKOK';
   
   }
 

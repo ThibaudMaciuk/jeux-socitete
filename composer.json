@@ -3,8 +3,8 @@
   "description": "jeu de societe",
   "autoload": {
     "psr-4": {
-      "Campus\\JeuxSocitete\\": "app/",
-      "Campus\\Test\\": "test/"
+      "App\\": "app/",
+      "Test\\": "test/"
     }
   },
   "authors": [
