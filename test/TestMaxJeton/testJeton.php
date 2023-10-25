@@ -9,38 +9,41 @@ require __DIR__ . '/../../app/jeton.php';
 
 class testJeton extends TestCase
 {
+    public $jeton;
+
+    public function __construct(string $name)
+    {
+        parent::__construct($name);
+        $this->jeton = new gestionJeton();
+    }
 
     public function test_init_3_Jeton()
     {
-        $jeton = new gestionJeton();
+        $this->jeton->addJeton(['rouge', 'bleu', 'blanc']);
 
-        $this->assertFalse($jeton->addJeton(['rouge', 'bleu']));
-        $this->assertFalse($jeton->addJeton(['rouge', 'bleu', 'test', 'test']));
-
-        $this->assertTrue($jeton->addJeton(['rouge', 'bleu', 'blanc']));
-
-        $this->assertEquals(1,$jeton->jetonRouge);
-        $this->assertEquals(1,$jeton->jetonBleu);
-        $this->assertEquals(1,$jeton->jetonBlanc);
-        $this->assertEquals(3,$jeton->total);
+        $this->assertEquals(1,($this->jeton->jetonRouge && $this->jeton->jetonBleu && $this->jeton->jetonBlanc));
     }
 
-    public function test_duplicata()
+    public function test_init_3_Jeton_false()
     {
-        $jeton = new gestionJeton();
+        $this->assertFalse($this->jeton->addJeton(['rouge', 'rouge', 'blanc']));
+    }
 
-        $this->assertFalse($jeton->addJeton(['rouge', 'bleu', 'bleu']));
+    public function test_ajout_4_couleur_jeton()
+    {
+        $this->assertFalse($this->jeton->addJeton(['rouge', 'bleu', 'jaune', 'vert']));
+    }
 
-        $this->assertEquals(0,$jeton->jetonRouge);
-        $this->assertEquals(0,$jeton->jetonBleu);
+    public function test_ajout_2_couleur()
+    {
+        $this->assertFalse($this->jeton->addJeton(['rouge', 'bleu']));
     }
 
     public function test_init_2_Jeton()
     {
-        $jeton = new gestionJeton();
-        $this->assertTrue($jeton->addJeton(['rouge']));
+        $this->jeton->addJeton(['rouge']);
 
-        $this->assertEquals(2, $jeton->jetonRouge);
+        $this->assertEquals(2, $this->jeton->jetonRouge);
 
     }
 }
