@@ -15,40 +15,57 @@ class gestionJeton
         echo "construct";
     }
 
-    public function addJeton(string $color, int $value = 1)
+    public function addJeton(array $colors)
     {
-        if (($this->total + $value) > 10)
-        {
+        $montant = 0;
+        if (count($colors) == 3) {
+            $montant = 1;
+        }
+        elseif (count($colors) == 1) {
+            $montant = 2;
+        }
+        else {
             return false;
         }
-                switch ($color) {
-                    case 'rouge':
-                        $this->jetonRouge += $value;
-                        break;
 
-                    case 'bleu':
-                        $this->jetonBleu += $value;
-                        break;
+        $verif = array_count_values($colors);
 
-                    case 'vert':
-                        $this->jetonVert += $value;
-                        break;
+        var_dump($verif);
 
-                    case 'or':
-                        $this->jetonOr += $value;
-                        break;
+        foreach ($verif as $key => $value)
+        {
+            if ($value > 1)
+            {
+                return false;
+            }
+        }
 
-                    case 'blanc':
-                        $this->jetonBlanc += $value;
-                        break;
-
-                    case 'noir':
-                        $this->jetonNoir += $value;
-                        break;
-                    default:
-                        return false;
-                }
-                $this->total += $value;
-                return true;
+        foreach ($colors as $color)
+        {
+            switch ($color) {
+                case 'rouge':
+                    $this->jetonRouge += $montant;
+                    break;
+                case 'bleu':
+                    $this->jetonBleu += $montant;
+                    break;
+                case 'vert':
+                    $this->jetonVert += $montant;
+                    break;
+                case 'or':
+                    $this->jetonOr += $montant;
+                    break;
+                case 'blanc':
+                    $this->jetonBlanc += $montant;
+                    break;
+                case 'noir':
+                    $this->jetonNoir += $montant;
+                    break;
+                default:
+                    return false;
+            }
+            $this->total += $montant;
+        }
+        return true;
     }
 }

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit>
     <testsuites>
-        <testsuite name="suite1">
-            <directory suffix=".php">./test/suite1</directory>
-        </testsuite>
-        <testsuite name="suite2">
-            <directory suffix=".php">./test/suite2</directory>
+        <testsuite name="jeton">
+            <directory suffix=".php">./test/TestMaxJeton</directory>
         </testsuite>
     </testsuites>
 </phpunit>
