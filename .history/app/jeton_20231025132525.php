@@ -75,8 +75,7 @@ class gestionJeton
 
 <?php
 $colors = ['rouge', 'bleu', 'vert', 'blanc', 'noir', 'or'];
-$nb = 0;
-
+$nb = 
 foreach($colors as $color){
     echo "<button class='' type='button'>$color</button></br>";
 }

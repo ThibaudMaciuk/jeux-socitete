@@ -69,19 +69,4 @@ class gestionJeton
         return true;
     }
 }
-
-
 ?>
-
-<?php
-$colors = ['rouge', 'bleu', 'vert', 'blanc', 'noir', 'or'];
-$nb = 0;
-
-foreach($colors as $color){
-    echo "<button class='' type='button'>$color</button></br>";
-}
-
-foreach($colors as $color){
-    echo "<div class='' type='button'>$color = $nb</div></br>";
-}
-
