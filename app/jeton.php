@@ -1,5 +1,6 @@
 <?php
 
+
 class gestionJeton
 {
     public $jetonRouge = 0;
@@ -9,26 +10,35 @@ class gestionJeton
     public $jetonBlanc = 0;
     public $jetonNoir = 0;
     public $total = 0;
+    public $colors = ['rouge', 'bleu', 'vert', 'blanc', 'noir', 'or'];
 
     public function __construct()
     {
-        echo "construct";
+        if(!isset($_SESSION)) {
+            session_start();
+            echo 'toto';
+            foreach($this->colors as $color){
+                $_SESSION[$color] = 0;
+                echo $_SESSION[$color];
+            }
+        }   
     }
 
     public function addJeton(array $colors)
     {
+
         $montant = 0;
-        if (count($colors) == 3) {
+        if (count($this->colors) == 3) {
             $montant = 1;
         }
-        elseif (count($colors) == 1) {
+        elseif (count($this->colors) == 1) {
             $montant = 2;
         }
         else {
             return false;
         }
 
-        $verif = array_count_values($colors);
+        $verif = array_count_values($this->colors);
 
         var_dump($verif);
 
@@ -40,26 +50,26 @@ class gestionJeton
             }
         }
 
-        foreach ($colors as $color)
+        foreach ($this->colors as $color)
         {
             switch ($color) {
                 case 'rouge':
-                    $this->jetonRouge += $montant;
+                    $_SESSION['rouge'] += $montant;
                     break;
                 case 'bleu':
-                    $this->jetonBleu += $montant;
+                    $_SESSION['bleu'] += $montant;
                     break;
                 case 'vert':
-                    $this->jetonVert += $montant;
+                    $_SESSION['vert'] += $montant;
                     break;
                 case 'or':
-                    $this->jetonOr += $montant;
+                    $_SESSION['or'] += $montant;
                     break;
                 case 'blanc':
-                    $this->jetonBlanc += $montant;
+                    $_SESSION['blanc'] += $montant;
                     break;
                 case 'noir':
-                    $this->jetonNoir += $montant;
+                    $_SESSION['noir'] += $montant;
                     break;
                 default:
                     return false;
@@ -70,18 +80,29 @@ class gestionJeton
     }
 }
 
+$gestionJeton = new gestionJeton();
 
-?>
-
-<?php
-$colors = ['rouge', 'bleu', 'vert', 'blanc', 'noir', 'or'];
-$nb = 0;
-
-foreach($colors as $color){
-    echo "<button class='' type='button'>$color</button></br>";
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $out = array();
+    foreach ($_POST as $key) {
+        $out[$key] = $_POST[$key];
+    }
+    $gestionJeton->addJeton($out);
 }
+echo "<form action='jeton.php' method='post'>";
 
-foreach($colors as $color){
-    echo "<div class='' type='button'>$color = $nb</div></br>";
-}
+    foreach($gestionJeton->colors as $color){
+        echo "<label for='$color'>$color</label></br>
+        <input id='$color' name='$color' type='checkbox' value='$color'/></br>";
+    }
+
+    foreach($gestionJeton->colors as $color){
+        echo "<div class='' type='button'>$color = $_SESSION[$color]</div></br>";
+    }
+
+echo "
+
+   <button type='submit'>Valider</button>
+</form>";
+
 
